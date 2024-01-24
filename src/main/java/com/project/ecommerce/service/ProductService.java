@@ -17,7 +17,7 @@ public class ProductService {
   }
 
   public List<Product> getProducts() {
-    return productRepository.findAll();
+    return (List<Product>) productRepository.findAll();
   }
 
   public Optional<Product> getProductById(Long id) {
@@ -28,9 +28,7 @@ public class ProductService {
     productRepository.save(product);
   }
 
-  public Product updateProduct(Product product) {
-    Long id = product.getId();
-
+  public Product updateProduct(Long id, Product product) {
     return productRepository
       .findById(id)
       .map(p -> {

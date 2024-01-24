@@ -1,37 +1,50 @@
 package com.project.ecommerce.model;
 
-import jakarta.persistence.CascadeType;
+// import jakarta.persistence.CascadeType;
+// import jakarta.persistence.OneToMany;
+// import java.util.ArrayList;
+// import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Customer {
 
   @Id
-  @GeneratedValue
-  @Column(name = "customer_id", updatable = false, nullable = false)
-  private Long id;
+  @Column(unique = true)
+  @NotBlank(message = "Email is required.")
+  @Email(message = "Invalid email format")
+  private String email;
 
-  @Column(nullable = false)
+  @NotBlank(message = "Name is required.")
+  @Size(
+    min = 3,
+    max = 30,
+    message = "Name must be not be less than 3 or more than 30 characters."
+  )
   private String name;
 
-  @OneToMany(
+  @NotBlank(message = "Address is required.")
+  private String address;
+  /*   @OneToMany(
     mappedBy = "customer",
     orphanRemoval = true,
     cascade = { CascadeType.PERSIST, CascadeType.REMOVE }
   )
-  private List<Review> reviews = new ArrayList<>();
+  private List<Review> reviews = new ArrayList<>(); */
 }

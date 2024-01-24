@@ -1,7 +1,7 @@
 package com.project.ecommerce.repository;
 
 import com.project.ecommerce.model.Product;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 // import java.util.List;
@@ -9,8 +9,4 @@ import org.springframework.stereotype.Repository;
 // import org.springframework.data.jpa.repository.Query;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
-  // @SuppressWarnings("null")
-  // @Query("SELECT p FROM Product p")
-  // List<@NonNull Product> findAll();
-}
+public interface ProductRepository extends CrudRepository<Product, Long> {}
