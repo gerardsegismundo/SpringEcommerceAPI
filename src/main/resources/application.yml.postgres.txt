@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce
+    username: postgres
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
+        
+server:
+  port: 8081
+
+application:
+  security:
+    jwt:
+      secret-key: 1A7DB5A11A52D88C2A03513D7EA6CED837B7DCA175A1411147D3459CAC92AEF0
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days

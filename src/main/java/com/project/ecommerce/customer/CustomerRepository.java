@@ -1,6 +1,5 @@
-package com.project.ecommerce.repository;
+package com.project.ecommerce.customer;
 
-import com.project.ecommerce.model.Customer;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 

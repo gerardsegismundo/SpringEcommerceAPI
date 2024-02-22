@@ -1,7 +1,5 @@
-package com.project.ecommerce.service;
+package com.project.ecommerce.product;
 
-import com.project.ecommerce.model.Product;
-import com.project.ecommerce.repository.ProductRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -30,20 +28,18 @@ public class ProductService {
 
   public Product updateProduct(Long id, Product product) {
     return productRepository
-      .findById(id)
-      .map(p -> {
-        if (product.getName() != null) {
-          p.setName(product.getName());
-        }
+        .findById(id)
+        .map(p -> {
+          if (product.getName() != null) {
+            p.setName(product.getName());
+          }
 
-        if (product.getPrice() != null) {
-          p.setPrice(product.getPrice());
-        }
-        return productRepository.save(p);
-      })
-      .orElseThrow(() ->
-        new IllegalArgumentException("Product not found with id: " + id)
-      );
+          if (product.getPrice() != null) {
+            p.setPrice(product.getPrice());
+          }
+          return productRepository.save(p);
+        })
+        .orElseThrow(() -> new IllegalArgumentException("Product not found with id: " + id));
   }
 
   public void deleteProduct(Long id) {

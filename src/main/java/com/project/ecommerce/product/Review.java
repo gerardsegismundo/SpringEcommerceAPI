@@ -1,4 +1,6 @@
-package com.project.ecommerce.model;
+package com.project.ecommerce.product;
+
+import com.project.ecommerce.customer.Customer;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,12 +36,7 @@ public class Review {
   @ManyToOne
   @NotNull
   @MapsId("customer")
-  @JoinColumn(
-    name = "email",
-    nullable = false,
-    referencedColumnName = "email",
-    foreignKey = @ForeignKey(name = "customer_review_fk")
-  )
+  @JoinColumn(name = "email", nullable = false, referencedColumnName = "email", foreignKey = @ForeignKey(name = "customer_review_fk"))
   private Customer customer;
 
   @NotNull(message = "Rating is required.")
@@ -48,12 +45,7 @@ public class Review {
 
   @ManyToOne
   @MapsId("product")
-  @JoinColumn(
-    name = "product_id",
-    nullable = false,
-    referencedColumnName = "product_id",
-    foreignKey = @ForeignKey(name = "product_review_fk")
-  )
+  @JoinColumn(name = "product_id", nullable = false, referencedColumnName = "product_id", foreignKey = @ForeignKey(name = "product_review_fk"))
   @NotNull
   private Product product;
 

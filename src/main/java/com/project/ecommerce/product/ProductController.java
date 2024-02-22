@@ -1,7 +1,5 @@
-package com.project.ecommerce.controller;
+package com.project.ecommerce.product;
 
-import com.project.ecommerce.model.Product;
-import com.project.ecommerce.service.ProductService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.ResponseEntity;
@@ -43,9 +41,8 @@ public class ProductController {
   @PutMapping("/{id}")
   @ResponseBody
   public ResponseEntity<Product> updateProduct(
-    @PathVariable Long id,
-    @RequestBody Product product
-  ) {
+      @PathVariable Long id,
+      @RequestBody Product product) {
     Product updatedProduct = productService.updateProduct(id, product);
 
     return ResponseEntity.ok(updatedProduct);
