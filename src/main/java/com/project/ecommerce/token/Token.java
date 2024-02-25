@@ -1,5 +1,7 @@
 package com.project.ecommerce.token;
 
+import org.springframework.lang.NonNull;
+
 import com.project.ecommerce.user.User;
 
 import jakarta.persistence.Entity;
